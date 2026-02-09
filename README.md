@@ -1,19 +1,7 @@
-# Moccasin Project
+# Stablecoin
 
-🐍 Welcome to your Moccasin project!
-
-## Quickstart
-
-1. Deploy to a fake local network that titanoboa automatically spins up!
-
-```bash
-mox run deploy
-```
-
-2. Run tests
-
-```
-mox test
-```
-
-_For documentation, please run `mox --help` or visit [the Moccasin documentation](https://cyfrin.github.io/moccasin)_
+1. Users can deposit $200 of ETH
+2. They can then mint $50 of stablecoin
+   1. This means they will have 4/1 ratio of collateral to stablecoin (200/50 == 4/1)
+   2. We will set a requires collateral ratio of 2/1
+3. If the price of ETH drops, for example to $50, others should be able to liquidate those users!
