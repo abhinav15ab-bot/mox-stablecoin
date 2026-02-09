@@ -111,6 +111,27 @@ def liquidate(collateral: address, user: address, debt_to_cover: uint256):
 
 
 # ------------------------------------------------------------------
+#                          EXTERNAL VIEW
+# ------------------------------------------------------------------
+@external
+@view
+def get_usd_value(collateral_address: address, amount: uint256) -> uint256:
+    return self._get_usd_value(collateral_address, amount)
+
+@external
+@view
+def get_collateral_balance_of_user(user: address, token_collateral: address) -> uint256:
+    return self.user_to_token_to_amount_deposited[user][token_collateral]
+    
+@external
+@view
+def get_token_amount_from_usd(token: address, usd_amount_in_wei: uint256) -> uint256:
+    return self._get_token_amount_from_usd(token, usd_amount_in_wei)
+    
+
+
+
+# ------------------------------------------------------------------
 #                        INTERNAL FUNCTION
 # ------------------------------------------------------------------
 
@@ -195,6 +216,7 @@ def _get_usd_value(token: address, amount: uint256) -> uint256:
     return (((convert(price, uint256)*ADDITIONAL_FEED_PRECISION)) * amount) // PRECISION
 
 @internal
+@view
 def _get_token_amount_from_usd(token: address, usd_amount_in_wei: uint256) -> uint256:
     price_feed: AggregatorV3Interface = AggregatorV3Interface(self.token_to_price_feed[token])
     price: int256 = staticcall price_feed.latestAnswer()

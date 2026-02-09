@@ -5,3 +5,4 @@
    1. This means they will have 4/1 ratio of collateral to stablecoin (200/50 == 4/1)
    2. We will set a requires collateral ratio of 2/1
 3. If the price of ETH drops, for example to $50, others should be able to liquidate those users!
+
